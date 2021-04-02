@@ -8,6 +8,20 @@ class CalendarController {
     return res.json(calendars);
   }
 
+  async delete(req, res) {
+    const { calendar_id } = req.params;
+
+    const calendar = await Calendar.findByPk(calendar_id);
+
+    if (!calendar) {
+      return res.status(400).json({ error: 'Calendario não existe.' });
+    }
+
+    await calendar.destroy();
+
+    return res.send();
+  }
+
   async update(req, res) {
     const { calendar_id } = req.params;
 
