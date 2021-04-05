@@ -1,6 +1,17 @@
-import React from 'react';
-import Home from './src/page/Home';
+import 'react-native-gesture-handler';
+import React, {Component} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {StatusBar} from 'react-native';
 
-export default function calendar() {
-  return <Home />;
+import Routes from './src/routes/index';
+
+export default class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <StatusBar backgroundColor="#131313" barStyle="light-content" />
+        <Routes />
+      </NavigationContainer>
+    );
+  }
 }

@@ -1,7 +1,10 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {renderCalendar} from '../../functions/script';
+import Day from '../day';
 
 export default function Calendar() {
+  const [days, setDays] = useState(renderCalendar());
   return (
     <View>
       <View style={styles.week}>
@@ -13,6 +16,12 @@ export default function Calendar() {
         <Text style={styles.weekDay}>Fri</Text>
         <Text style={styles.weekDay}>Sat</Text>
       </View>
+      <FlatList
+        numColumns={7}
+        data={days}
+        keyExtractor={item => item.key}
+        renderItem={({item}) => <Day data={item} />}
+      />
     </View>
   );
 }
@@ -20,9 +29,10 @@ export default function Calendar() {
 const styles = StyleSheet.create({
   weekDay: {
     fontSize: 24,
+    flex: 1,
   },
   week: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    marginLeft: 12,
   },
 });
