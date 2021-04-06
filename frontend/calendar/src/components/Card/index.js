@@ -1,11 +1,16 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 export default function Card() {
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.tag} />
       <Text style={styles.content}>Make the project</Text>
+      <View style={styles.endContainer}>
+        <Icon name="edit" color="black" size={30} />
+        <Icon name="trash" color="black" size={30} />
+      </View>
     </TouchableOpacity>
   );
 }
@@ -33,5 +38,13 @@ const styles = StyleSheet.create({
   },
   content: {
     marginLeft: '20%',
+  },
+  endContainer: {
+    alignSelf: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 70,
+    marginBottom: 20,
   },
 });
